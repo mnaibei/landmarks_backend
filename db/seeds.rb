@@ -1,20 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# db/seeds.rb
-
 require 'json'
 
 # Load the JSON data from the file
 json_data = File.read(Rails.root.join('db', 'landmarks.json'))
 landmarks = JSON.parse(json_data)
 
+# Create users
+User.create(username: 'user1')
+User.create(username: 'user2')
+
 # Iterate through the JSON data and create Landmark records
 landmarks.each do |landmark_data|
+  # Check if a landmark with the same name already exists
+  existing_landmark = Landmark.find_by(name: landmark_data['name'])
+
+  # Create a new landmark only if it doesn't already exist
+  next unless existing_landmark.nil?
+
   landmark = Landmark.new(
     name: landmark_data['name'],
     images: landmark_data['image'], # Updated to handle an array of images
@@ -46,3 +47,7 @@ landmarks.each do |landmark_data|
   # Save the record to the database
   landmark.save!
 end
+
+# Create reviews for the landmark
+UserReview.create(user_id: 3, landmark_id: 1, rating: 4, comment: 'Great place!')
+UserReview.create(user_id: 4, landmark_id: 2, rating: 5, comment: 'Amazing landmark!')
