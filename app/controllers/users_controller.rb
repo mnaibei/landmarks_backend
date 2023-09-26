@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-
-    if @users
-      render json: @users
+    if @users.any?
+      render json: @users, status: :ok
     else
       render json: {
-        status: 500,
+        status: :not_found,
         errors: ['No users found']
       }
     end
