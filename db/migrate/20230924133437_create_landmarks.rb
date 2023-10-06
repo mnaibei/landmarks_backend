@@ -4,6 +4,7 @@ class CreateLandmarks < ActiveRecord::Migration[7.0]
       t.string :name
       t.json :images
       t.string :type_of_landmark
+      t.string :country
       t.string :visiting_price
       t.json :coordinates
       t.text :description
@@ -16,7 +17,6 @@ class CreateLandmarks < ActiveRecord::Migration[7.0]
       t.text :wildlife
       t.json :facilities
       t.boolean :guided_tours
-      t.json :visitor_reviews_ratings
       t.json :special_events
       t.text :local_culture
       t.text :weather

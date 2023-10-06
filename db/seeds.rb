@@ -20,6 +20,7 @@ landmarks.each do |landmark_data|
     name: landmark_data['name'],
     images: landmark_data['image'], # Updated to handle an array of images
     type_of_landmark: landmark_data['type'],
+    country: landmark_data['country'],
     visiting_price: landmark_data['visiting_price'],
     coordinates: landmark_data['coordinates'],
     description: landmark_data['description'],
@@ -32,7 +33,6 @@ landmarks.each do |landmark_data|
     wildlife: landmark_data['wildlife'],
     facilities: landmark_data['facilities'],
     guided_tours: landmark_data['guided_tours'],
-    visitor_reviews_ratings: landmark_data['visitor_reviews_ratings'],
     special_events: landmark_data['special_events'],
     local_culture: landmark_data['local_culture'],
     weather: landmark_data['weather'],
@@ -49,5 +49,5 @@ landmarks.each do |landmark_data|
 end
 
 # Create reviews for the landmark
-UserReview.create(user_id: 3, landmark_id: 1, rating: 4, comment: 'Great place!')
-UserReview.create(user_id: 4, landmark_id: 2, rating: 5, comment: 'Amazing landmark!')
+UserReview.create(user_id: 1, landmark_id: 1, rating: 4, comment: 'Great place!')
+UserReview.create(user_id: 2, landmark_id: 2, rating: 5, comment: 'Amazing landmark!')
