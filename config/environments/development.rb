@@ -10,7 +10,7 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-
+  config.hosts << 'cz7wzmcb-3000.uks1.devtunnels.ms'
   # Show full error reports.
   config.consider_all_requests_local = true
 
