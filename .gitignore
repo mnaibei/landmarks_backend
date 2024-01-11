@@ -28,3 +28,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 landmarks.json
+
+# Ignore Docker-related files and directories
+# docker-compose.yml
+docker-compose.override.yml
+# .dockerignore
+/postgres-data/
